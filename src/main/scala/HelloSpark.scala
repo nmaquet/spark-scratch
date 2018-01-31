@@ -7,8 +7,8 @@ object HelloSpark {
     val logFile = SPARK_HOME + "README.md"
     val spark = SparkSession.builder.appName("HelloSpark").getOrCreate()
     val logData = spark.read.textFile(logFile).cache()
-    val numAs = logData.filter(line => line.contains("a")).count()
-    val numBs = logData.filter(line => line.contains("b")).count()
+    val numAs = logData.filter(_.contains("a")).count()
+    val numBs = logData.filter(_.contains("b")).count()
     println(s"Lines with a: $numAs, Lines with b: $numBs")
     spark.stop()
   }
