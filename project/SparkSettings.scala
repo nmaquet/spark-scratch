@@ -16,7 +16,7 @@ object SparkSettings extends AutoPlugin {
   val sparkLogLevel = settingKey[String]("Spark log level")
 
   override lazy val projectSettings = Seq(
-    sparkMaster := "yarn",
+    sparkMaster := "local[4]",
     awsAccessKeyId := mustGetEnv("SBT_AWS_ACCESS_KEY_ID"),
     awsSecretAccessKey := mustGetEnv("SBT_AWS_SECRET_ACCESS_KEY"),
     sparkLogLevel := "WARN",
